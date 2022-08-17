@@ -16,8 +16,6 @@ function Index(props) {
     const [list, setList] = useState([])
 
     useEffect(() => {
-        console.log(projectInfo)
-        console.log(cleanObject(projectInfo))
         fetch(`${apiUrl}/projects?${qs.stringify(cleanObject(projectInfo))}`).then(res=>res.json()).then(
             res => {
                 console.log(res)
