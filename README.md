@@ -24,6 +24,47 @@
 
                                 npx --no -- commitlint --edit
 
+### Mock方案
+* 代码侵入
+* Mock.js：静态随机数据无法模拟增删改查之类的接口；
+* 依赖后端的接口工具如apiFox、yapi：强依赖后端；
+* node服务（json-server）：后端api修改了无法自动修改，可以模拟增删改查；
+
+* RESTFUL API：一种接口设计的方式 由method以及uri组成，能起到见名之意的效果；
+例如Get /tickets 获取列表
+    Get：获取
+    Post：增加
+    Put：替换
+    Patch：修改
+    Delete：删除
+Patch vs Put：区别在于patch是用于更新接口中的某一个字段或者某几个作用于局部，而put则是替换掉整个对象；
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
