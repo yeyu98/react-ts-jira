@@ -3,7 +3,7 @@
 * manifest.json 配置PWA的一些如图标之类的东西
 
 ### eslint、prettier、commitlint的配置
-* eslint：格式检测；
+* eslint：用于检测格式是否正确的工具；
 * prettier：用于格式化处理的；
     * 安装prettier npm install --save-dev --save-exact prettier；
     * 创建prettier配置文件 echo {}> .prettierrc.json;
@@ -15,6 +15,14 @@
             * lint-staged：指定哪些后缀的文件自动执行prettier；
             * PS: 最新版本的husky安装之后是不会在package.json中出现pre-commit的命令的，会直接在项目中添加.husky文件；
     * eslint和prettier同时工作会出现一些冲突：npm i eslint-config-prettier（cra默认会有eslint的配置）;
+* commitlint：用于检测commit的格式是否正确的工具；
+    * 安装husky
+    * 安装： npm install --save-dev @commitlint/config-conventional @commitlint/cli （window）
+    * 生成配置文件 echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitlint.config.js（需要注意通过echo生成的都是utf-16需要手动更改一次）
+    * 安装之后需要在husky下添加指令：#!/bin/sh
+                                . "$(dirname "$0")/_/husky.sh"
+
+                                npx --no -- commitlint --edit
 
 
 
