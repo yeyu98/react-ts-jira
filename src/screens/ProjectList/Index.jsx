@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ProjectBar from './ProjectBar';
 import ProjectList from './ProjectList';
 import * as qs from 'qs'; // import * as ... 用法是将所有导出的东西都放在 ... 这个对象中
+import useMount from 'utils/hooks/useMount';
 import { cleanObject } from 'utils';
 
 const apiUrl = process.env.REACT_APP_API_URL;
@@ -24,14 +25,13 @@ function Index(props) {
         )
     }, [projectInfo])
 
-    useEffect(() => {
+    useMount(() => {
         fetch(`${apiUrl}/users`).then(res=>res.json()).then(
             res => {
-                console.log(res)
                 setUsers(res)
             }
         )
-    }, [])
+    })
 
     return (
         <div>
