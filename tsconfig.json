@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src", // 提示作用没有配置alias依然会有问题出现
     "target": "es5",
     "lib": [
       "dom",

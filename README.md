@@ -1,46 +1,16 @@
-# Getting Started with Create React App
+### 文件介绍
+* robots.txt 配置爬虫
+* manifest.json 配置PWA的一些如图标之类的东西
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### eslint、prettier、commitlint的配置
+* eslint：格式检测；
+* prettier：用于格式化处理的；
+    * 安装prettier npm install --save-dev --save-exact prettier；
+    * 创建prettier配置文件 echo {}> .prettierrc.json;
+    * 创建prettierignore文件（指定某些文件不需要格式化类似于gitignore）；
+    * 代码格式化： 
+        *  手动格式化prettier：npx prettier --write .;
+        *  自动格式化（在提交代码之前）：通过Pre-commit Hook实现（npx mrm@2 lint-staged）；
+            * 安装husky：管理git hook的东西自动生成在git commit之前的命令；
+            * lint-staged：指定哪些后缀的文件自动执行prettier；
+    * eslint和prettier同时工作会出现一些冲突：npm i eslint-config-prettier（cra默认会有eslint的配置）;
