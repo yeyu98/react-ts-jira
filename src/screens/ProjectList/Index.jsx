@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import ProjectBar from './ProjectBar';
 import ProjectList from './ProjectList';
+import * as qs from 'qs'; // import * as ... 用法是将所有导出的东西都放在 ... 这个对象中
+import { cleanObject } from 'utils';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 function Index(props) {
     const [projectInfo, setProjectInfo] = useState({
         name: '',
-        projectId: ''
+        personId: ''
     })
 
     const [users, setUsers] = useState([])
@@ -14,7 +16,9 @@ function Index(props) {
     const [list, setList] = useState([])
 
     useEffect(() => {
-        fetch(`${apiUrl}/projects`).then(res=>res.json()).then(
+        console.log(projectInfo)
+        console.log(cleanObject(projectInfo))
+        fetch(`${apiUrl}/projects?${qs.stringify(cleanObject(projectInfo))}`).then(res=>res.json()).then(
             res => {
                 console.log(res)
                 setList(res)

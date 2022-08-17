@@ -6,13 +6,13 @@ function ProjectBar(props) {
         <div>
             <form>
                 <div>
-                    <input type="text" value={projectInfo.name} placeholder="请输入名字" onChange={e => setProjectInfo({
+                    <input type="text" value={projectInfo.name} placeholder="项目名" onChange={e => setProjectInfo({
                         ...projectInfo,
                         name: e.target.value
                     })} />
                     <select value={projectInfo.projectId} onChange={e => setProjectInfo({
                         ...projectInfo,
-                        projectId: e.target.value
+                        personId: e.target.value
                     })}>
                         <option value={''}>负责人</option>
                         {
