@@ -4,7 +4,7 @@ import ProjectList from "./ProjectList";
 import ImgList from "./ImgList";
 import * as qs from "qs"; // import * as ... 用法是将所有导出的东西都放在 ... 这个对象中
 import useMount from "utils/hooks/useMount";
-import { cleanObject } from "utils";
+import { cleanObject } from "utils/utils";
 import useDebounce from "utils/hooks/useDebounce";
 
 const apiUrl = process.env.REACT_APP_API_URL;
