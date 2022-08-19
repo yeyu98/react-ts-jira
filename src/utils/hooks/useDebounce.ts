@@ -12,7 +12,8 @@ import { useEffect, useState } from "react";
 //     }, delay);
 //   };
 // };
-const useDebounce = (value, delay) => {
+const useDebounce = <V>(value: V, delay: number) => {
+  // 这段代码其实我不是很理解
   const [debounceValue, setDebounceValue] = useState(value);
 
   useEffect(() => {
