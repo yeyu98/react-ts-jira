@@ -86,3 +86,5 @@ Patch vs Put：区别在于patch是用于更新接口中的某一个字段或者
 * npm并行执行多条指令？
     * 可以通过&来连接执行多条指令，通过&&则是串行，但在windows下两者都是串行；
     * window并行执行方案 通过 concurrently（支持跨终端） 实现；
+* 安装jira-dev-tools之后请求失败的原因在dev环境中需要将apiUrl和当前项目的链接保持一致；
+* 安装jira-dev-tools之后请求一直404且工具未生效，需要根目录下执行下npx msw init ./public;
