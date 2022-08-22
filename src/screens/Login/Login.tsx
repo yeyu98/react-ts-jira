@@ -4,7 +4,7 @@ const apiUrl = process.env.REACT_APP_API_URL;
 
 function Login(props: any) {
   interface loginParam {
-    userName: string;
+    username: string;
     password: string;
   }
   const login = (param: loginParam) => {
@@ -22,17 +22,17 @@ function Login(props: any) {
   const handleClick = (ev: FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
     console.log(ev.currentTarget.elements);
-    const userName = (ev.currentTarget.elements[0] as HTMLInputElement).value;
+    const username = (ev.currentTarget.elements[0] as HTMLInputElement).value;
     const password = (ev.currentTarget.elements[1] as HTMLInputElement).value;
-    login({ userName, password });
+    login({ username, password });
   };
 
   return (
     <div>
       <form onSubmit={handleClick}>
         <div>
-          <label htmlFor="userName">用户名：</label>
-          <input type="text" id="userName" />
+          <label htmlFor="username">用户名：</label>
+          <input type="text" id="username" />
         </div>
         <div>
           <label htmlFor="password">密码：</label>
