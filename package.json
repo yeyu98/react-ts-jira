@@ -10,8 +10,10 @@
     "@types/node": "^16.11.49",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
+    "concurrently": "^7.3.0",
     "eslint-config-prettier": "^8.5.0",
     "http-proxy-middleware": "^2.0.6",
+    "jira-dev-tool": "^1.7.61",
     "qs": "^6.11.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -25,7 +27,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "husky install",
-    "json-server": "json-server __Json_server_mock__/db.json --watch --port 3001"
+    "json-server": "json-server __Json_server_mock__/db.json --watch --port 3001 --middlewares __Json_server_mock__/middleware.js",
+    "serve": "concurrently \"npm run json-server\" \"npm run start\""
   },
   "eslintConfig": {
     "extends": [
@@ -56,5 +59,8 @@
   },
   "lint-staged": {
     "*.{js,css,ts,tsx}": "prettier --write"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

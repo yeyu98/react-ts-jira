@@ -83,3 +83,6 @@ Patch vs Put：区别在于patch是用于更新接口中的某一个字段或者
 ### 遇到的问题
 * 添加了preitter之后commit无法自动格式化代码并出现乱码？
     * 由于echo创建文件，会自动选择utf-16的编码格式，导致husky读取配置文件异常，需要将vscode底部栏的utf-16改成utf-8；
+* npm并行执行多条指令？
+    * 可以通过&来连接执行多条指令，通过&&则是串行，但在windows下两者都是串行；
+    * window并行执行方案 通过 concurrently（支持跨终端） 实现；

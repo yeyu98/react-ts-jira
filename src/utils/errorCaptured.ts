@@ -1,4 +1,4 @@
-const errorCaptured = async (asyncFunc, ...args) => {
+const errorCaptured = async (asyncFunc: Function, ...args: any) => {
   try {
     const res = await asyncFunc(...args);
     return [null, res];

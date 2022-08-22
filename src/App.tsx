@@ -1,13 +1,13 @@
 import React from "react";
-import TestUseArray from "screens/Demo/TestUseArray";
-import ProjectListScreen from "screens/ProjectList/Index";
+import Login from "screens/Login/Login";
+// import ProjectListScreen from "screens/ProjectList/Index";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <ProjectListScreen />
-      <TestUseArray />
+      <Login />
+      {/* <ProjectListScreen /> */}
     </div>
   );
 }
