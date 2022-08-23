@@ -13,6 +13,7 @@ interface ProjectListProps {
 }
 function ProjectList(props: ProjectListProps) {
   const { list, users } = props;
+  console.log(list, users);
   const getUserName = (personId: string) =>
     users.find((user) => user.id === personId)?.name;
   return (
@@ -27,9 +28,9 @@ function ProjectList(props: ProjectListProps) {
         <tbody>
           {list.map((project) => {
             return (
-              <tr key={project.id}>
-                <td>{project.name}</td>
-                <td>{getUserName(project.personId)}</td>
+              <tr key={project?.id}>
+                <td>{project?.name}</td>
+                <td>{getUserName(project?.personId)}</td>
               </tr>
             );
           })}

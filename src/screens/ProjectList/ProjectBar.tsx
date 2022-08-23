@@ -26,7 +26,7 @@ function ProjectBar(props: ProjectBarProps) {
         <div>
           <input
             type="text"
-            value={projectInfo.name}
+            value={projectInfo?.name}
             placeholder="项目名"
             onChange={(e) =>
               setProjectInfo({
@@ -46,8 +46,8 @@ function ProjectBar(props: ProjectBarProps) {
           >
             <option value={""}>负责人</option>
             {users.map((user) => (
-              <option value={user.id} key={user.id}>
-                {user.name}
+              <option value={user?.id} key={user?.id}>
+                {user?.name}
               </option>
             ))}
           </select>

@@ -6,10 +6,9 @@ import * as qs from "qs"; // import * as ... 用法是将所有导出的东西�
 import useMount from "utils/hooks/useMount";
 import { cleanObject } from "utils/utils";
 import useDebounce from "utils/hooks/useDebounce";
+import request from "utils/axios";
 
-const apiUrl = process.env.REACT_APP_API_URL;
-
-function Index(props: any) {
+function ProjectMain(props: any) {
   const [projectInfo, setProjectInfo] = useState({
     name: "",
     personId: "",
@@ -26,20 +25,18 @@ function Index(props: any) {
   };
 
   useEffect(() => {
-    fetch(`${apiUrl}/projects?${qs.stringify(cleanObject(debounceUser))}`)
-      .then((res) => res.json())
-      .then((res) => {
+    request(`/projects?${qs.stringify(cleanObject(debounceUser))}`).then(
+      (res) => {
         console.log(res);
         setList(res);
-      });
+      }
+    );
   }, [debounceUser]);
 
   useMount(() => {
-    fetch(`${apiUrl}/users`)
-      .then((res) => res.json())
-      .then((res) => {
-        setUsers(res);
-      });
+    request("/users").then((res) => {
+      setUsers(res);
+    });
   });
 
   return (
@@ -56,4 +53,4 @@ function Index(props: any) {
   );
 }
 
-export default Index;
+export default ProjectMain;
