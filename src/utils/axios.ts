@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useAuth } from "../context/AuthContext/CreateAuthContext";
 
 let axionInstance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
@@ -9,6 +8,10 @@ let axionInstance = axios.create({
   },
 });
 const localStorageKey = "__auth_provider_token__";
+// 登出
+const logout = () => {
+  localStorage.removeItem(localStorageKey);
+};
 
 axionInstance.interceptors.request.use(
   (config) => {
@@ -33,10 +36,8 @@ axionInstance.interceptors.response.use(
     switch (status) {
       case 400:
       case 401:
-        const { logout } = useAuth();
-        logout().then(() => {
-          window.location.reload();
-        });
+        logout();
+        window.location.reload();
         break;
       default:
         break;
