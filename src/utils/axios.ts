@@ -9,11 +9,11 @@ let axionInstance = axios.create({
   },
 });
 const localStorageKey = "__auth_provider_token__";
-const token = localStorage.getItem(localStorageKey) || "";
 
 axionInstance.interceptors.request.use(
   (config) => {
     if (config && config.headers) {
+      const token = localStorage.getItem(localStorageKey) || "";
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
