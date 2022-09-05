@@ -44,6 +44,53 @@ Patch vs Put：区别在于patch是用于更新接口中的某一个字段或者
 * 为什么要用ts？
     * 强类型（在写代码的时候就能观察到问题的）而JS则需要在runtime的时候才能知道；
 * unknown 类型：类型天花板，可以给unknown赋值任何类型，但unknown声明的变量只能赋值给 unknown或any类型，如需赋值给其他类型的变量需要确定类型之后才可以赋值；
+* 类型别名 本质上是对类型的抽离；
+* interface和type的区别；
+    * 相同点：1 都可以声明对象或函数；
+             2 都可以通过extends对类型进行扩展；
+                // 声明函数
+                type fn = (age: number, age1: number) => number
+                interface fn1 {
+                (age: number, age1: number): number
+                }
+
+                // 扩展extends
+                interface Person {
+                name: string
+                }
+                interface SuperPerson extends Person {
+                age: number
+                }
+
+                type Person1 = {
+                name: string
+                }
+                type SuperPerson1 = Person1 & {age: number}
+    * 不同点：1 联合类型、utility types使用interface就无法定义；
+             2 interface可以对相同名字的类型自动合并但type不行；
+                interface Person {
+                name: string,
+                age: number
+                }
+
+                interface Person {
+                function: string
+                }
+
+                let p: Person = {}
+
+                type PersonOne = {name:string}
+                type PersonOne = {age:number}
+
+                let p1: PersonOne = {}
+
+* utility types集合
+    * Parameters<typeof fn | fn>：提取函数中的所有类型（如果是函数则需要通过typeof，如果是个类型别名则直接传入fn）；
+    * Partial<T>: 将接口中的属性全都变成可选；
+    * Omit<T, 'name' | 'age'>：删除接口中的某些属性;
+* ts操作符集合
+    * typeof：静态代码检测类型功能比js中的强大；
+    * keyof：提取接口中的所有属性并返回联合类型（类似于遍历）比如 p keyof Person；
 
 
 
