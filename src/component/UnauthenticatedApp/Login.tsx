@@ -1,30 +1,34 @@
-import { FormEvent } from "react";
 import { useAuth } from "context/AuthContext/CreateAuthContext";
+import { Form, Input, Button } from "antd";
 
 function Login(props: any) {
-  const { login, user } = useAuth();
+  const { login } = useAuth();
 
-  const handleClick = (ev: FormEvent<HTMLFormElement>) => {
-    ev.preventDefault();
-    const username = (ev.currentTarget.elements[0] as HTMLInputElement).value;
-    const password = (ev.currentTarget.elements[1] as HTMLInputElement).value;
-    login({ username, password });
+  const handleClick = (values: { username: string; password: string }) => {
+    login(values);
   };
 
   return (
     <div>
-      <form onSubmit={handleClick}>
-        {`当前用户是${user?.name}`}
-        <div>
-          <label htmlFor="username">用户名：</label>
-          <input type="text" id="username" />
-        </div>
-        <div>
-          <label htmlFor="password">密码：</label>
-          <input type="password" id="password" />
-        </div>
-        <button>登录</button>
-      </form>
+      <Form onFinish={handleClick}>
+        <Form.Item
+          name={"username"}
+          rules={[{ required: true, message: "请输入用户名" }]}
+        >
+          <Input type="text" id="username" />
+        </Form.Item>
+        <Form.Item
+          name={"password"}
+          rules={[{ required: true, message: "请输入密码" }]}
+        >
+          <Input type="password" id="password" />
+        </Form.Item>
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            登录
+          </Button>
+        </Form.Item>
+      </Form>
     </div>
   );
 }

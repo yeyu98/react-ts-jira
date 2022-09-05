@@ -1,4 +1,5 @@
 import React from "react";
+import { Form, Input, Select } from "antd";
 
 export interface User {
   id: string;
@@ -17,42 +18,46 @@ interface ProjectBarProps {
   };
   setProjectInfo: (params: ProjectBarProps["projectInfo"]) => void;
 }
+const { Option } = Select;
 function ProjectBar(props: ProjectBarProps) {
   const { projectInfo, setProjectInfo, users } = props;
-
   return (
     <div>
-      <form>
-        <div>
-          <input
-            type="text"
-            value={projectInfo?.name}
-            placeholder="项目名"
-            onChange={(e) =>
-              setProjectInfo({
-                ...projectInfo,
-                name: e.target.value,
-              })
-            }
-          />
-          <select
-            value={projectInfo.personId}
-            onChange={(e) =>
-              setProjectInfo({
-                ...projectInfo,
-                personId: e.target.value,
-              })
-            }
-          >
-            <option value={""}>负责人</option>
-            {users.map((user) => (
-              <option value={user?.id} key={user?.id}>
-                {user?.name}
-              </option>
-            ))}
-          </select>
+      <Form>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Form.Item>
+            <Input
+              type="text"
+              value={projectInfo?.name}
+              placeholder="项目名"
+              onChange={(e) =>
+                setProjectInfo({
+                  ...projectInfo,
+                  name: e.target.value,
+                })
+              }
+            />
+          </Form.Item>
+          <Form.Item>
+            <Select
+              value={projectInfo.personId}
+              onChange={(value) =>
+                setProjectInfo({
+                  ...projectInfo,
+                  personId: value,
+                })
+              }
+            >
+              <Option value={""}>负责人</Option>
+              {users.map((user) => (
+                <Option value={user?.id} key={user?.id}>
+                  {user?.name}
+                </Option>
+              ))}
+            </Select>
+          </Form.Item>
         </div>
-      </form>
+      </Form>
     </div>
   );
 }
