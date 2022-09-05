@@ -1,5 +1,6 @@
 import { useAuth } from "context/AuthContext/CreateAuthContext";
-import { Form, Input, Button } from "antd";
+import { Form, Input } from "antd";
+import { LongButton } from ".";
 
 function Login(props: any) {
   const { login } = useAuth();
@@ -15,18 +16,18 @@ function Login(props: any) {
           name={"username"}
           rules={[{ required: true, message: "请输入用户名" }]}
         >
-          <Input type="text" id="username" />
+          <Input type="text" id="username" placeholder="用户名" />
         </Form.Item>
         <Form.Item
           name={"password"}
           rules={[{ required: true, message: "请输入密码" }]}
         >
-          <Input type="password" id="password" />
+          <Input type="password" id="password" placeholder="密码" />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <LongButton type="primary" htmlType="submit">
             登录
-          </Button>
+          </LongButton>
         </Form.Item>
       </Form>
     </div>

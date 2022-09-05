@@ -3,11 +3,21 @@ import { useAuth } from "context/AuthContext/CreateAuthContext";
 import { Form, Input } from "antd";
 import { LongButton } from ".";
 
-function Register(props: any) {
-  const { register } = useAuth();
+interface IProps {
+  isRegistered: boolean;
+}
+
+function LoginOrRegister(props: IProps) {
+  const { isRegistered } = props;
+  const { register, login } = useAuth();
 
   const handleClick = (values: { username: string; password: string }) => {
-    register(values);
+    // isRegistered ? login(values) : register(values);
+    if (isRegistered) {
+      login(values);
+    } else {
+      register(values);
+    }
   };
 
   return (
@@ -17,17 +27,17 @@ function Register(props: any) {
           name={"username"}
           rules={[{ required: true, message: "请输入用户名" }]}
         >
-          <Input type="text" id="username" />
+          <Input type="text" placeholder="用户名" id="username" />
         </Form.Item>
         <Form.Item
           name={"password"}
           rules={[{ required: true, message: "请输入密码" }]}
         >
-          <Input type="password" id="password" />
+          <Input type="password" placeholder="密码" id="password" />
         </Form.Item>
         <Form.Item>
           <LongButton type="primary" htmlType="submit">
-            注册
+            {isRegistered ? "登录" : "注册"}
           </LongButton>
         </Form.Item>
       </Form>
@@ -35,4 +45,4 @@ function Register(props: any) {
   );
 }
 
-export default Register;
+export default LoginOrRegister;
