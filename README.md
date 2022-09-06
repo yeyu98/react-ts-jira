@@ -39,6 +39,10 @@
     Delete：删除
 Patch vs Put：区别在于patch是用于更新接口中的某一个字段或者某几个作用于局部，而put则是替换掉整个对象；
 
+### grid和flex布局
+* grid更适合二维，flex更适合一维；
+* gird更适用不需要跟着内容变动的布局，flex更适用内容变动布局；
+
 
 ### TS 
 * 为什么要用ts？
