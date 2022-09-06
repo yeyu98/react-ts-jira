@@ -1,6 +1,4 @@
 import { useState } from "react";
-import Login from "./Login";
-import Register from "./Register";
 import { Button, Card } from "antd";
 import logo from "../../assets/logo.svg";
 import left from "../../assets/left.svg";
@@ -20,8 +18,7 @@ const UnauthenticatedApp = () => {
       <ShadowCard>
         <Title>欢迎使用jira</Title>
         <LoginOrRegister isRegistered={isRegistered} />
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <a href="javascript:void(0)" onClick={handleClick}>
+        <a onClick={handleClick}>
           {!isRegistered ? "已经有账号了？请登录" : "没有账号？注册新账号"}
         </a>
       </ShadowCard>

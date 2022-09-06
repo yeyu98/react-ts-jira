@@ -21,7 +21,7 @@ export const register = (data: { username: string; password: string }) => {
 
 // 请求个人信息
 export const boostrapUser = () => {
-  return request("/me");
+  return request("/me").then((res) => res.user);
 };
 
 export const logout = async () => localStorage.removeItem(localStorageKey);

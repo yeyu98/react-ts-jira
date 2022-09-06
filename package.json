@@ -17,6 +17,7 @@
     "axios": "^0.27.2",
     "concurrently": "^7.3.0",
     "craco-antd": "^2.0.0",
+    "dayjs": "^1.11.5",
     "eslint-config-prettier": "^8.5.0",
     "http-proxy-middleware": "^2.0.6",
     "jira-dev-tool": "^1.7.61",
@@ -41,7 +42,10 @@
       "react-app",
       "react-app/jest",
       "prettier"
-    ]
+    ],
+    "rules": {
+      "jsx-a11y/anchor-is-valid":"off"
+    }
   },
   "browserslist": {
     "production": [
@@ -58,6 +62,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
+    "compression-webpack-plugin": "^10.0.0",
     "husky": "^8.0.1",
     "json-server": "^0.17.0",
     "lint-staged": "^13.0.3",

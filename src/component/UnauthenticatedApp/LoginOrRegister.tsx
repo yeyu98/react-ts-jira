@@ -12,7 +12,6 @@ function LoginOrRegister(props: IProps) {
   const { register, login } = useAuth();
 
   const handleClick = (values: { username: string; password: string }) => {
-    // isRegistered ? login(values) : register(values);
     if (isRegistered) {
       login(values);
     } else {
